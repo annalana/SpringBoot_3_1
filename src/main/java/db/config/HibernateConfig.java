@@ -27,8 +27,9 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan(value = "db")
 public class HibernateConfig {
-    @Autowired
+
     private Environment env;
+    @Autowired
     HibernateConfig(Environment env) {
         this.env = env;
     }
