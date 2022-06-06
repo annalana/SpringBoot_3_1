@@ -2,6 +2,7 @@ package web.models;
 
 
 import javax.persistence.*;
+import java.math.BigInteger;
 
 @Entity
 @Table(name = "userstable")
@@ -15,26 +16,25 @@ public class User {
     @Column(name = "lastname")
     private String lastName;
     @Column(name = "phonenumber")
-    private int phoneNumber;
+    private BigInteger phoneNumber;
     @Column
     private String email;
 
     // Конструкторы
     public User() {}
-//    public User(String name, String lastName) {
-//        this(name, lastName, -1, "");
-//    }
-//    public User(String name, String lastName, String email) {
-//        this(name, lastName, -1, email);
-//    }
-//    public User(String name, String lastName, int phoneNumber) {
-//        this(name, lastName, phoneNumber, "");
-//    }
-    public User(String name, String lastName, int phoneNumber, String email) {
+    public User(String name, String lastName, BigInteger phoneNumber, String email) {
         this.name = name;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
+    }
+
+    public User(User user) {
+        id = user.getId();
+        name = user.getName();
+        lastName = user.getLastName();
+        phoneNumber = user.getPhoneNumber();
+        email = user.getEmail();
     }
     // Методы
     @Override
@@ -63,10 +63,10 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    public int getPhoneNumber() {
+    public BigInteger getPhoneNumber() {
         return phoneNumber;
     }
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(BigInteger phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
     public String getEmail() {

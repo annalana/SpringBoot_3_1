@@ -7,24 +7,24 @@
 </head>
 <body>
 <h1>User Redaction</h1>
-<form method="get" action="/do_redaction">
-    <input type="hidden" name="id" th:value="${user.getId()}">
+<form method="get" action="/do_redaction" th:object="${user}">
+    <input type="hidden" name="id" th:field="*{id}" >
     <table>
         <tr>
             <td>Name</td>
-            <td><input type="text" name="name" th:value="${user.getName()}"></td>
+            <td><input type="text" name="name" th:field="*{name}" ></td>
         </tr>
         <tr>
             <td>Last Name</td>
-            <td><input type="text" name="lastname" th:value="${user.getLastName()}"></td>
+            <td><input type="text" name="lastname" th:field="*{lastName}"></td>
         </tr>
         <tr>
             <td>Email</td>
-            <td><input type="email" name="email" th:value="${user.getEmail()}"></td>
+            <td><input type="email" name="email" th:field="*{email}" ></td>
         </tr>
         <tr>
             <td>Phone</td>
-            <td><input type="number" name="phone" th:value="${user.getPhoneNumber()}"></td>
+            <td><input type="number" name="phone" th:field="*{phoneNumber}"></td>
         </tr>
     </table>
     <input type="submit">

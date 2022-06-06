@@ -39,23 +39,23 @@
     </th:block>
   </table>
   <h1>User Creation</h1>
-  <form method="get" action="/add">
+  <form method="get" action="/add" th:object="${newuser}">
     <table>
       <tr>
         <td>Name</td>
-        <td><input type="text" name="name"></td>
+        <td><input type="text" name="name" th:field="*{name}"></td>
       </tr>
       <tr>
         <td>Last Name</td>
-        <td><input type="text" name="lastname"></td>
+        <td><input type="text" name="lastname" th:field="*{lastName}"></td>
       </tr>
       <tr>
         <td>Email</td>
-        <td><input type="email" name="email"></td>
+        <td><input type="email" name="email" th:field="*{email}"></td>
       </tr>
       <tr>
         <td>Phone</td>
-        <td><input type="number" name="phone"></td>
+        <td><input type="number" name="phone" th:field="*{phoneNumber}"></td>
       </tr>
     </table>
     <input type="submit">
