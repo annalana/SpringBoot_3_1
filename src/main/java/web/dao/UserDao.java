@@ -1,6 +1,6 @@
-package db.dao;
+package web.dao;
 
-import db.models.User;
+import web.models.User;
 
 import java.util.List;
 

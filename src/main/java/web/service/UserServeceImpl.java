@@ -1,7 +1,7 @@
-package db.service;
+package web.service;
 
-import db.dao.UserDao;
-import db.models.User;
+import web.dao.UserDao;
+import web.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +12,6 @@ import java.util.List;
 public class UserServeceImpl implements UserService{
 
     UserDao userDao;
-    UserServeceImpl(){}
     @Autowired
     UserServeceImpl(UserDao userDao) {
         this.userDao = userDao;
@@ -39,7 +38,6 @@ public class UserServeceImpl implements UserService{
     public User redactUser(long id, User updated) {
         return userDao.redactUser(id, updated);
     }
-
     @Transactional
     @Override
     public List<User> getUserList() {

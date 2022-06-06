@@ -1,7 +1,5 @@
-package db.config;
+package web.config;
 
-import db.models.User;
-import org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -9,8 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -25,7 +21,7 @@ import java.util.Properties;
 @Configuration
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
-@ComponentScan(value = "db")
+@ComponentScan(value = {"web.dao", "web.service", "web.models"})
 public class HibernateConfig {
 
     private Environment env;
@@ -51,7 +47,7 @@ public class HibernateConfig {
         props.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         props.put("hibernate.current_session_context_class", "thread");
         bean.setDataSource(getDataSource());
-        bean.setPackagesToScan("db.models");
+        bean.setPackagesToScan("web.models");
         bean.setJpaVendorAdapter(vendorAdapter);
         bean.setJpaProperties(props);
         return bean;
