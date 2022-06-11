@@ -10,7 +10,6 @@ import java.util.List;
 
 @Service
 public class UserServeceImpl implements UserService{
-
     UserDao userDao;
     @Autowired
     UserServeceImpl(UserDao userDao) {

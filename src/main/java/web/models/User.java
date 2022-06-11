@@ -1,6 +1,5 @@
 package web.models;
 
-
 import javax.persistence.*;
 import java.math.BigInteger;
 
